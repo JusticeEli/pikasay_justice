@@ -1,0 +1,396 @@
+///test3//
+#include <iostream>
+#define size 4
+using namespace std;
+
+
+//static stack template
+//for holding any data type
+template <typename T>
+class stack
+{
+     T data[size];
+     int top;
+public:
+     stack()
+     {
+          top=-1;
+     }
+     void push();
+     void pop();
+     void display();
+};
+
+template <typename T>
+void stack<T>::push()
+{
+     if(top==size-1)
+     {
+          cout<<"\nStack is full";
+          return;
+     }
+     else
+     {
+          top++;
+          cout<<"Enter Data : ";
+          cin>>data[top];
+     }
+}
+
+template <typename T>
+void stack<T>::pop()
+{
+     if(top==-1)
+          cout<<"\n Stack is empty";
+     else
+     {
+          cout<<data[top]<<"deleted "<<endl;
+          top--;
+     }
+}
+
+template <typename T>
+void stack<T>::display()
+{
+     int t=top;
+     while(t>=0)
+     {
+          cout<<data[t]<<endl;
+          t--;
+     }
+}
+
+
+
+template <typename T>
+struct node
+{
+  T data;
+  node *next;
+};
+//Dynamic Stack Template
+//stack for holding any data type
+template <typename T>
+class stackDynamic
+{
+      node<T> *top;
+public :
+      stackDynamic()
+      { top=NULL;}
+       void push();
+       void pop();
+       void display();
+      ~stackDynamic();
+};
+
+template <typename T>
+void stackDynamic<T>::push()
+{
+      node<T> *temp;
+      temp=new node<T>;
+      cout<<"Enter data :";
+      cin >>temp->data;
+      temp->next=top;
+      top=temp;
+}
+template <typename T>
+void stackDynamic<T>::pop()
+{
+      if(top!=NULL)
+      {
+            node<T> *temp=top;
+            top=top->next;
+            cout<<temp->data<<"deleted";
+            delete temp;
+      }
+      else
+            cout<<"Stack empty";
+}
+template <typename T>
+void stackDynamic<T>::display()
+{
+      node<T> *temp=top;
+      while(temp!=NULL)
+      {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+      }
+}
+template <typename T>
+stackDynamic<T>::~stackDynamic()
+{
+      while(top!=NULL)
+      {
+            node<T> *temp=top;
+            top=top->next;
+            delete temp;
+      }
+}
+
+
+
+
+
+//stack for holding inventories
+
+class Inventory
+{       int serialNum;
+       string manufactDate;
+        int iotNum;
+public :
+      Inventory();
+       void setSerialNum(int);
+       void setManufactDate(string);
+       void setIotNum(int);
+       int getSerialNum();
+       string getManufactDate();
+       int getIotNum();
+
+};
+
+string Inventory::getManufactDate()
+{
+     return manufactDate;
+}
+template <typename T>
+class stackDynamicInventories
+{
+      node<T> *top;
+public :
+      stackDynamicInventories()
+      { top=NULL;}
+       void push();
+       void pop();
+       void display();
+      ~stackDynamicInventories();
+};
+
+template <typename T>
+void stackDynamicInventories<T>::push()
+{
+      node<T> *temp;
+      temp=new node<T>;
+      Inventory inv=(Inventory)temp->data;
+        cout<<"Enter Serial Number :";
+      cin>>inv.serialNum;
+     cout<<"Enter Date of Manufacture :";
+      cin>>inv.manufactDate;
+       cout<<"Enter IoT number :";
+      cin>>inv.iotNum;
+      temp->next=top;
+      top=temp;
+}
+template <typename T>
+void stackDynamicInventories<T>::pop()
+{
+      if(top!=NULL)
+      {
+            node<T> *temp=top;
+            top=top->next;
+            cout<<temp->data<<"deleted";
+            delete temp;
+      }
+      else
+            cout<<"Stack empty";
+}
+template <typename T>
+void stackDynamicInventories<T>::display()
+{
+      node<T> *temp=top;
+      while(temp!=NULL)
+      {
+           Inventory inv=(Inventory)temp->data;
+
+        cout<<inv.getManufactDate()<<" ";
+        temp=temp->next;
+      }
+}
+template <typename T>
+stackDynamicInventories<T>::~stackDynamicInventories()
+{
+      while(top!=NULL)
+      {
+            node<T> *temp=top;
+            top=top->next;
+            delete temp;
+      }
+}
+
+
+int main()
+{
+      stackDynamic<Inventory> st;
+      char ch;
+      do
+      {
+            cout<<"stack options\np for add part to inventory \n0 for taking a part from inventory \nd for Display \nf for finish";
+            cin>>ch;
+            switch(ch)
+            {
+                  case 'p': st.push();break;
+                  case '0': st.pop();break;
+                  case 'd': st.display();break;
+            }
+      }while(ch!='f');
+      return 0;
+}
+//////////////////////////////////////////////////////////////////////////////test//////
+#include <iostream>
+#define size 4
+using namespace std;
+
+template <typename T>
+class stack
+{
+     T data[size];
+     int top;
+public:
+     stack()
+     {
+          top=-1;
+     }
+     void push();
+     void pop();
+     void display();
+};
+
+template <typename T>
+void stack<T>::push()
+{
+     if(top==size-1)
+     {
+          cout<<"\nStack is full";
+          return;
+     }
+     else
+     {
+          top++;
+          cout<<"Enter Data : ";
+          cin>>data[top];
+     }
+}
+
+template <typename T>
+void stack<T>::pop()
+{
+     if(top==-1)
+          cout<<"\n Stack is empty";
+     else
+     {
+          cout<<data[top]<<"deleted "<<endl;
+          top--;
+     }
+}
+
+template <typename T>
+void stack<T>::display()
+{
+     int t=top;
+     while(t>=0)
+     {
+          cout<<data[t]<<endl;
+          t--;
+     }
+}
+
+
+//Dynamic Stack Template
+template <typename T>
+struct node
+{
+  T data;
+  node *next;
+};
+template <typename T>
+class stackDynamic
+{
+      node<T> *top;
+public :
+      stackDynamic()
+      { top=NULL;}
+       void push();
+       void pop();
+       void display();
+      ~stackDynamic();
+};
+
+template <typename T>
+void stackDynamic<T>::push()
+{
+      node<T> *temp;
+      temp=new node<T>;
+      cout<<"Enter data :";
+      cin>>temp->data;
+      temp->next=top;
+      top=temp;
+}
+template <typename T>
+void stackDynamic<T>::pop()
+{
+      if(top!=NULL)
+      {
+            node<T> *temp=top;
+            top=top->next;
+            cout<<temp->data<<"deleted";
+            delete temp;
+      }
+      else
+            cout<<"Stack empty";
+}
+template <typename T>
+void stackDynamic<T>::display()
+{
+      node<T> *temp=top;
+      while(temp!=NULL)
+      {
+        cout<<temp->data<<" ";
+        temp=temp->next;
+      }
+}
+template <typename T>
+stackDynamic<T>::~stackDynamic()
+{
+      while(top!=NULL)
+      {
+            node<T> *temp=top;
+            top=top->next;
+            delete temp;
+      }
+}
+
+
+
+
+
+class Inventory
+{       int serialNum;
+       string manufactDate;
+        int lotNum;
+public :
+      stackDynamic()
+       void setSerialNum(int);
+       void setManufactDate(string);
+       void setIotNum(int);
+       int getSerialNum();
+       string getManufactDate();
+       int getIotNum();
+
+};
+
+int main()
+{
+      stackDynamic<int> st;
+      char ch;
+      do
+      {
+            cout<<"stack options\nP for push \nO for Pop \nD for Display \nQ for quit";
+            cin>>ch;
+            switch(ch)
+            {
+                  case 'p': st.push();break;
+                  case '0': st.pop();break;
+                  case 'd': st.display();break;
+            }
+      }while(ch!='Q');
+      return 0;
+}
