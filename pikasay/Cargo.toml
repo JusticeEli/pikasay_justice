@@ -1,0 +1,20 @@
+[package]
+name = "pikasay-justice"
+version = "0.1.0"
+edition = "2021"
+authors=["Justice Eli"]
+license="MIT or Apache-2.0 Public license"
+description="Simple pikachu say project"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+structopt = "0.3.26"
+colour = "0.6.0"
+
+#wrapper for error::Error to enable main to handle display of error well
+failure = "0.1.8" #remove verbose-ness of Box<dyn std::error::Error>
+exitfailure = "0.5.1" #use failure crate under the hood but when passing error to the main using
+#?,it uses display trait instead of debug hence cleaner messages with some context
+assert_cmd = "2.0.4" #for running commandline test
+predicates = "2.1.1"
