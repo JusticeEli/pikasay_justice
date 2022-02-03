@@ -1,5 +1,5 @@
 [package]
-name = "port_sniffer"
+name = "port_sniffer_justice"
 version = "0.1.0"
 edition = "2021"
 authors=["Justice Eli"]
