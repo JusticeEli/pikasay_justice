@@ -1,0 +1,17 @@
+-- Your SQL goes here
+
+CREATE TABLE parents(
+id SERIAL PRIMARY KEY,
+first_name VARCHAR NOT NULL,
+last_name VARCHAR NOT NULL,
+full_name VARCHAR NOT NULL,
+contact VARCHAR NOT NULL,
+city VARCHAR NOT NULL,
+job_status VARCHAR NOT NULL,
+age VARCHAR NOT NULL,
+gender VARCHAR NOT NULL,
+job_type VARCHAR NOT NULL,
+email VARCHAR NOT NULL,
+photo VARCHAR NOT NULL,
+thumbnail VARCHAR NOT NULL
+)
